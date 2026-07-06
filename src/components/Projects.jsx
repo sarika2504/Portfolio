@@ -2,66 +2,43 @@ import "../styles/Projects.css";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
-const projects = [
+const projectsData = [
   {
-    title: "🌾 Smart Guardian",
+    title: "Smart Water Detection System",
     description:
-      "A smart agriculture solution using ESP32 and sensors to monitor environmental conditions and improve crop management.",
-    tech: ["ESP32", "IoT", "Sensors"],
-    github: "https://github.com/sarika2504"
+      "Arduino-based system that detects water levels and alerts users to prevent overflow and wastage.",
+    github: "https://github.com/sarika2504",
   },
   {
-    title: "💧 Smart Water Leakage Detection",
+    title: "Farm Guardian",
     description:
-      "Arduino-based system that detects water leakage using flow sensors and helps reduce water wastage through real-time monitoring.",
-    tech: ["Arduino", "Embedded C", "Flow Sensor"],
-    github: "https://github.com/sarika2504"
+      "AI-powered smart agriculture project for monitoring crops using sensors and automation.",
+    github: "https://github.com/sarika2504",
   },
   {
-    title: "📍 Automatic Location Tracking",
+    title: "Portfolio Website",
     description:
-      "Embedded GPS-based tracking system designed for real-time location monitoring and emergency applications.",
-    tech: ["GPS", "Arduino", "Embedded Systems"],
-    github: "https://github.com/sarika2504"
+      "Personal portfolio built using React, Vite, Framer Motion, and CSS to showcase projects and skills.",
+    github: "https://github.com/sarika2504",
   },
-  {
-    title: "🌼 Pollination Bot",
-    description:
-      "An embedded system developed to support automated crop pollination for improving agricultural productivity.",
-    tech: ["Raspberry Pi", "Camera", "IoT"],
-    github: "https://github.com/sarika2504"
-  }
 ];
 
 function Projects() {
   return (
-    <section className="projects-section" id="projects">
-
+    <section className="projects" id="projects">
       <h2>Projects</h2>
 
-      <div className="project-container">
-
-        {projects.map((project, index) => (
-
+      <div className="projects-container">
+        {projectsData.map((project, index) => (
           <motion.div
-            className="project-card"
             key={index}
-            whileHover={{ scale: 1.04 }}
+            className="project-card"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
           >
-
-            <div className="project-image">
-              Project Image
-            </div>
-
             <h3>{project.title}</h3>
-
             <p>{project.description}</p>
-
-            <div className="tech-stack">
-              {project.tech.map((item, i) => (
-                <span key={i}>{item}</span>
-              ))}
-            </div>
 
             <a
               href={project.github}
@@ -69,16 +46,11 @@ function Projects() {
               rel="noreferrer"
               className="github-btn"
             >
-              <FaGithub />
-              GitHub
+              <FaGithub /> View Project
             </a>
-
           </motion.div>
-
         ))}
-
       </div>
-
     </section>
   );
 }
